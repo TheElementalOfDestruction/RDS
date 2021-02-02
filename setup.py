@@ -29,7 +29,7 @@ setup(
     author='Destiny Peterson (The Elemental of Destruction)',
     author_email='arceusthe@gmail.com',
     license='GPL',
-    packages=[main_module],
+    packages=setuptools.find_packages(),
     py_modules=[main_module],
     include_package_data=True,
 )

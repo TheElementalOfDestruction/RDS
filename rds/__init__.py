@@ -29,6 +29,6 @@ https://github.com/TheElementalOfDestruction/rds
 
 __author__ = 'Destiny Peterson (The Elemental of Destruction)'
 __date__ = '2021-02-02'
-__version__ = '1.1.1'
+__version__ = '1.1.2'
 
 from rds.rds_dict import RDSDict
