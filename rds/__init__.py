@@ -32,4 +32,3 @@ __date__ = '2021-02-02'
 __version__ = '1.1.1'
 
 from rds.rds_dict import RDSDict
-from rds.utils import stop
