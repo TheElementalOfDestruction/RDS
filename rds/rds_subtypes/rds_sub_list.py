@@ -238,5 +238,8 @@ class RDSSubList(RDSSubBase):
 
 
 
+# Register RDSSubList as the handler for list.
 registerRDSSubType(list, RDSSubList)
+
+# Add handling to the pprint module for RDSSubList.
 pprint.PrettyPrinter._dispatch[RDSSubList.__repr__] = pprint.PrettyPrinter._pprint_list

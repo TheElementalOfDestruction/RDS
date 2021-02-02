@@ -4,7 +4,8 @@
 
 """
 RDS:
-    Redundantly save the data to the disk to allow for easy
+    Redundantly save the data to the disk to allow for easy and safe permanent
+    data.
 
 https://github.com/TheElementalOfDestruction/rds
 """
@@ -28,7 +29,7 @@ https://github.com/TheElementalOfDestruction/rds
 
 __author__ = 'Destiny Peterson (The Elemental of Destruction)'
 __date__ = '2021-02-02'
-__version__ = '1.1.0'
+__version__ = '1.1.1'
 
 from rds.rds_dict import RDSDict
 from rds.utils import stop

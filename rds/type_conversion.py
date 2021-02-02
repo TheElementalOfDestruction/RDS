@@ -15,6 +15,7 @@ def noType(master, inp):
 
 def registerRDSSubType(_type, rds_handler):
     """
-    Adds a RDSSubType handler for the specified type.
+    Adds a RDSSubType handler for the specified type. Generally, the handler should
+    be a class.
     """
     TYPE_CONVERSION_DICT[_type] = rds_handler

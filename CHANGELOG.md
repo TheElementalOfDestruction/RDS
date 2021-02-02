@@ -1,3 +1,8 @@
+**v1.1.1**
+* Updated the README to have at least *some* useful information.
+* Added docstrings and comments in many places where they were desperately needed.
+* Modified the thread used for the `IDGenerator` class so that it would automatically exit when the main thread does.
+
 **v1.1.0**
 * Reorganized file structure to place all the RDS subtypes into their own submodule for better organization and ease of access.
 

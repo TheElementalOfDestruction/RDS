@@ -1,6 +1,7 @@
 class RDSSubBase(object):
     """
-    Used for detection of RDS subclasses. All RDS subclasses will inherit from this.
+    Base class for all RDS subtypes. Used mainly for detecting when an object is
+    an RDS subtype.
     """
     def __init__(self, master):
         self._master = master

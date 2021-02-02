@@ -13,11 +13,33 @@ from rds.utils import restoreRDS
 class RDSDict(object):
     __dict = None
     def __init__(self, location, name, redundancy = 2, maxId = 999999):
+        """
+        A Redundant Data Storage Dictionary.
+        :param location:    The location on the disk where the folder containing the
+                            RDS files will be located.
+        :param name:        The unique name for this RDSDict instance. This is also
+                            used as the name of the folder that contains the RDS
+                            files.
+        :param redundancy:  The level of redundancy to be used. Currently this
+                            has no noticable upsides for numbers greater than 3. 2
+                            is believed to be the best at the moment, but 3 might
+                            be better.
+        :param maxId:       The highest unique modification id that the IDGenerator
+                            will user. This should idealy be a very high number. if
+                            you end up finding that multiple modifications occuring
+                            simultaneously have shared the same id, this number is
+                            set too low.
+
+        The actual location of the RDS files will be the location plus the name. For
+        example, if your location is "/home/user/rds" and your name is "rds1", the
+        rds files will be stored in "/home/user/rds/rds1/".
+        """
         location = location.replace('\\', '/')
         location += '' if location.endswith('/') else '/'
         self.__location = location
         self.__name = name
         self.__redundancy = redundancy
+        # The full path in which the files will be saved.
         self.__realLocation = self.__location + self.__name + '/'
         self.__formatString = self.__realLocation + '{}.pickle'
         self.__savingFile = self.__realLocation + 'SAVING_STARTED'
@@ -28,6 +50,10 @@ class RDSDict(object):
         self.loadData()
 
     def getData(self):
+        """
+        Returns a copy of the data in the dictionary. Generally meant for internal
+        use as modifying the returned dictionary could end up being problematic.
+        """
         ret = copy.copy(self.__dict)
         for x in ret:
             ret[x] = ret[x].getData() if isinstance(ret[x], RDSSubBase) else ret[x]
@@ -75,23 +101,24 @@ class RDSDict(object):
 
     def _awaitTurn(self):
         """
-        Waits for it's turn before returning. Returns an int.
+        Waits for it's turn before returning. Returns a unique integer id.
         """
         id = self.__idGen.generateId()
         self._running.append(id)
         while self._running[0] != id:
-            pass # I would prefer to use a sleep function here, but that can be problematic if done with async
+            pass # I would prefer to use a sleep function here, but that can be problematic if done with async.
         return id
 
     def _save(self, start = 0):
         """
-        Save the data. :param start: specified where we should start saving. This
+        Save the data. :param start: specifies where we should start saving. This
         is used to finish a save when it was interrupted.
         """
-        # Make sure if any dictionaries or lists were added that we change them to the correct type
+        # Make sure if any dictionaries or lists were added that we change them to the correct type.
         for x in self.__dict:
             self.__dict[x] = convertType(self, self.__dict[x])
 
+        # Make the save directory if it doesn't exist.
         os.makedirs(self.__realLocation, exist_ok = True)
         with open(self.__savingFile, 'w') as sf:
             for id in range(start, self.__redundancy):
@@ -244,4 +271,5 @@ class RDSDict(object):
     def values(self, *args, **kwargs):
         return self.__dict.values(*args, **kwargs)
 
+# Add handling to the pprint module for RDSDict.
 pprint.PrettyPrinter._dispatch[RDSDict.__repr__] = pprint.PrettyPrinter._pprint_dict

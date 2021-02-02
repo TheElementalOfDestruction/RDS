@@ -172,5 +172,8 @@ class RDSSubDict(RDSSubBase):
 
 
 
+# Register RDSSubDict as the handler for dict.
 registerRDSSubType(dict, RDSSubDict)
+
+# Add handling to the pprint module for RDSSubDict.
 pprint.PrettyPrinter._dispatch[RDSSubDict.__repr__] = pprint.PrettyPrinter._pprint_dict
