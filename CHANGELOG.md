@@ -1,5 +1,5 @@
 **v1.1.2**
-* Fixed bug in `setup.py` that cause the `rds_subtypes` submodule to not be installed.
+* Fixed bug in `setup.py` that caused the `rds_subtypes` submodule to not be installed.
 
 **v1.1.1**
 * Updated the README to have at least *some* useful information.
