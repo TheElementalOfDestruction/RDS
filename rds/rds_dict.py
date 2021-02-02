@@ -1,6 +1,8 @@
 import collections
+import copy
 import os
 import pickle
+import pprint
 
 from rds.id_generator import IDGenerator
 from rds.rds_sub_base import RDSSubBase
@@ -88,10 +90,7 @@ class RDSDict(object):
         """
         # Make sure if any dictionaries or lists were added that we change them to the correct type
         for x in self.__dict:
-            if isinstance(self.__dict[x], dict):
-                self.__dict[x] = RDSSubDict(self, self.__dict[x])
-            elif isinstance(self.__dict[x], list):
-                self.__dict[x] = RDSSubList(self, self.__dict[x])
+            self.__dict[x] = convertType(self, self.__dict[x])
 
         os.makedirs(self.__realLocation, exist_ok = True)
         with open(self.__savingFile, 'w') as sf:
@@ -244,3 +243,5 @@ class RDSDict(object):
 
     def values(self, *args, **kwargs):
         return self.__dict.values(*args, **kwargs)
+
+pprint.PrettyPrinter._dispatch[RDSDict.__repr__] = pprint.PrettyPrinter._pprint_dict

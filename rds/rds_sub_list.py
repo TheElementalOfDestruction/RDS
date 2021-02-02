@@ -1,4 +1,5 @@
 import copy
+import pprint
 
 from rds.rds_sub_base import RDSSubBase
 from rds.type_conversion import convertType, registerRDSSubType
@@ -238,3 +239,4 @@ class RDSSubList(RDSSubBase):
 
 
 registerRDSSubType(list, RDSSubList)
+pprint.PrettyPrinter._dispatch[RDSSubList.__repr__] = pprint.PrettyPrinter._pprint_list
