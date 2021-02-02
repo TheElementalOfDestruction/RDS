@@ -1,7 +1,7 @@
 import copy
 import pprint
 
-from rds.rds_sub_base import RDSSubBase
+from rds.rds_subtypes import RDSSubBase
 from rds.type_conversion import convertType, registerRDSSubType
 
 

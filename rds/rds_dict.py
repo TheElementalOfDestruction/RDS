@@ -5,7 +5,7 @@ import pickle
 import pprint
 
 from rds.id_generator import IDGenerator
-from rds.rds_sub_base import RDSSubBase
+from rds.rds_subtypes import RDSSubBase
 from rds.type_conversion import convertType
 from rds.utils import restoreRDS
 
