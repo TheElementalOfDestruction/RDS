@@ -5,7 +5,7 @@ def convertType(master, inp):
     """
     Converts the inputs to the correct type
     """
-    return TYPE_CONVERSION_DICT.get(type(input), noType)(master, inp)
+    return TYPE_CONVERSION_DICT.get(type(inp), noType)(master, inp)
 
 def noType(master, inp):
     """
