@@ -23,7 +23,7 @@ class RDSSubDict(RDSSubBase):
 
     def _save(self):
         for x in self.__dict:
-            self.__dict[x] = convertType(self.__dict[x])
+            self.__dict[x] = convertType(self._master, self.__dict[x])
 
         self._master._save()
 

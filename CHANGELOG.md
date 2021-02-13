@@ -1,5 +1,6 @@
 **v1.1.3**
 * Fixed major bug that prevented subtypes from working. The parameter `inp` was used, but in the most important place I accidentally put `input` which made it so that no types were being converted.
+* Fixed issue in `RDSSubDict` where `convertType` was being called incorrectly.
 
 **v1.1.2**
 * Fixed bug in `setup.py` that caused the `rds_subtypes` submodule to not be installed.
