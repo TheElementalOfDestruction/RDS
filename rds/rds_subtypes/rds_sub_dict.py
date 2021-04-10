@@ -10,7 +10,6 @@ class RDSSubDict(RDSSubBase):
     def __init__(self, master, dictionary):
         RDSSubBase.__init__(self, master)
         self.__dict = dictionary
-        self._running = master._running
 
         for x in self.__dict:
             self.__dict[x] = convertType(master, self.__dict[x])

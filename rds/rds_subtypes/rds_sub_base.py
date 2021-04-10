@@ -5,6 +5,7 @@ class RDSSubBase(object):
     """
     def __init__(self, master):
         self._master = master
+        self._running = master._running
 
     def _awaitTurn(self):
         return self._master._awaitTurn()

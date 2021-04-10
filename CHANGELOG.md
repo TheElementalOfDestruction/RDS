@@ -1,3 +1,6 @@
+**v1.1.4**
+* Fixed major bug that prevented a lot of list modification functions.
+
 **v1.1.3**
 * Fixed major bug that prevented subtypes from working. The parameter `inp` was used, but in the most important place I accidentally put `input` which made it so that no types were being converted.
 * Fixed issue in `RDSSubDict` where `convertType` was being called incorrectly.
