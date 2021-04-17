@@ -8,7 +8,7 @@ Each ``RDSDict`` object will have it's own ``IDGenerator`` object with generates
 
 Creating a New RDS Type
 -----------------------
-This module will not be able to detect changes made to an object unless it has a corresponding RDS subtype. As such, if you want to use a custom type in an RDS structure and have changes to it registered, you will need to create your own RDS subtype. Doing so is a relatively simple process. The first thing you must do is create a new class that is a subclass of `RDSSubBase`.
+This module will not be able to detect changes made to an object unless it has a corresponding RDS subtype. As such, if you want to use a custom type in an RDS structure and have changes to it registered, you will need to create your own RDS subtype. Doing so is a relatively simple process. The first thing you must do is create a new class that is a subclass of ``RDSSubBase``.
 
 .. code:: python
 
