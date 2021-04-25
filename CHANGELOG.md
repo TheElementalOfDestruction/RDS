@@ -1,3 +1,7 @@
+**v1.1.5**
+* Updated `setup.py`.
+* Fixed README.
+
 **v1.1.4**
 * Fixed major bug that prevented a lot of list modification functions.
 

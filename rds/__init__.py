@@ -28,7 +28,7 @@ https://github.com/TheElementalOfDestruction/rds
 #    along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 __author__ = 'Destiny Peterson (The Elemental of Destruction)'
-__date__ = '2021-02-02'
-__version__ = '1.1.4'
+__date__ = '2021-04-25'
+__version__ = '1.1.5'
 
 from rds.rds_dict import RDSDict

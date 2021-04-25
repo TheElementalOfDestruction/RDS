@@ -46,6 +46,7 @@ You must also ensure that your subtype has a ``getData`` method that will either
 Once you have done all of that, you will finally need to register your subtype with the module. So for a RDS subtype called ``MyRDSSubType`` that will be replacing objects of the class ``MyClass``, you would register that like so:
 
 .. code:: python
+
     registerRDSSubType(MyType, MyRDSSubType)
 
 After that line has been executed, the module will be aware of your subtype and automatically replace any instances of the class you specified with the RDS subtype class.
