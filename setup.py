@@ -10,7 +10,7 @@ main_module = 'rds'
 with open('README.rst', 'rb') as stream:
     long_description = stream.read().decode('utf-8').replace('\r', '')
 
-from RDS import __version__
+from rds import __version__
 
 setup(
     name = main_module,
