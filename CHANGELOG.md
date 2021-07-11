@@ -1,3 +1,6 @@
+**v1.2.0**
+* Updated `IDGenerator` to use a lock system as opposed to a socket system. The sockets would occasionally fail for some reason and were not as efficient as they could have been. This should make everything a lot smoother.
+
 **v1.1.5**
 * Updated `setup.py`.
 * Fixed README.
