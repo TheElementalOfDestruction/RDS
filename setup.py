@@ -15,7 +15,7 @@ with open('README.rst', 'rb') as stream:
 from rds import __version__
 
 setup(
-    name = 'RDS',
+    name = 'py-rds',
     version = __version__,
     description = "Python Redundant Data Storage Module",
     long_description = long_description,
