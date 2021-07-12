@@ -1,5 +1,7 @@
 import os
 
+import setuptools
+
 from setuptools import setup
 
 # A handful of variables that are used a couple of times.
@@ -13,7 +15,7 @@ with open('README.rst', 'rb') as stream:
 from rds import __version__
 
 setup(
-    name = main_module,
+    name = 'RDS',
     version = __version__,
     description = "Python Redundant Data Storage Module",
     long_description = long_description,

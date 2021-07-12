@@ -1,0 +1,6 @@
+include MANIFEST.in
+include README.md
+include LICENSE.txt
+include CHANGELOG.md
+recursive-include rds *
+recursive-exclude * *.py[co]

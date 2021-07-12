@@ -4,10 +4,10 @@ import os
 import pickle
 import pprint
 
-from rds.id_generator import IDGenerator
-from rds.rds_subtypes import RDSSubBase
-from rds.type_conversion import convertType
-from rds.utils import restoreRDS
+from .id_generator import IDGenerator
+from .rds_subtypes import RDSSubBase
+from .type_conversion import convertType
+from .utils import restoreRDS
 
 
 class RDSDict(object):

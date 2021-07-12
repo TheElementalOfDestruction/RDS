@@ -1,4 +1,4 @@
-from rds.type_conversion import convertType
+from .type_conversion import convertType
 
 def restoreRDS(master, dictionary):
     for x in dictionary:

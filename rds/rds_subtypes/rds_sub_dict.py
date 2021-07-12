@@ -1,8 +1,8 @@
 import copy
 import pprint
 
-from rds.rds_subtypes import RDSSubBase
-from rds.type_conversion import convertType, registerRDSSubType
+from . import RDSSubBase
+from ..type_conversion import convertType, registerRDSSubType
 
 
 class RDSSubDict(RDSSubBase):

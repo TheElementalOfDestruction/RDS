@@ -1,3 +1,5 @@
+|License: GPL v3| |PyPI3| |PyPI1|
+
 RDS
 ===
 Python Redundant Data Storage Module. Store changes made to a dictionary onto the disk in a redundant manor that will prevent it from getting corrupted if the saving is interrupted.
@@ -50,3 +52,12 @@ Once you have done all of that, you will finally need to register your subtype w
     registerRDSSubType(MyType, MyRDSSubType)
 
 After that line has been executed, the module will be aware of your subtype and automatically replace any instances of the class you specified with the RDS subtype class.
+
+.. |License: GPL v3| image:: https://img.shields.io/badge/License-GPLv3-blue.svg
+   :target: LICENSE.txt
+
+.. |PyPI3| image:: https://img.shields.io/badge/pypi-1.2.1-blue.svg
+   :target: https://pypi.org/project/PTS/1.2.1/
+
+.. |PyPI1| image:: https://img.shields.io/badge/python-3.6+-brightgreen.svg
+   :target: https://www.python.org/downloads/release/python-367/

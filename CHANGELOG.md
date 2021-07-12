@@ -1,3 +1,7 @@
+**v1.2.1**
+* Prepared for upload to PyPI.
+* Changed to use relative imports.
+
 **v1.2.0**
 * Updated `IDGenerator` to use a lock system as opposed to a socket system. The sockets would occasionally fail for some reason and were not as efficient as they could have been. This should make everything a lot smoother.
 
