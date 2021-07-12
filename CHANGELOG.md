@@ -1,3 +1,7 @@
+**v1.2.2**
+* Changed public name for PyPI (why is RDS refused?).
+* Fixed README to use new name in links.
+
 **v1.2.1**
 * Prepared for upload to PyPI.
 * Changed to use relative imports.
