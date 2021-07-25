@@ -4,9 +4,16 @@ RDS
 ===
 Python Redundant Data Storage Module. Store changes made to a dictionary onto the disk in a redundant manor that will prevent it from getting corrupted if the saving is interrupted.
 
-An ``RDSDict`` allows you to make asynchronous and multithreaded modifications to a dictionary safely, and also allows you to have those modifications saved in a way that is redundant. Should the object get interrupted during the saving process, it can restore from the most recently completed entry.
+An ``RDSDict`` allows you to make asynchronous and multithreaded modifications to a dictionary safely, and also allows you to have those modifications saved in a way that is redundant. Should the object get interrupted during the saving process, it can restore from the most recently completed entry. An ``RDSList`` is the equivalent class for a list.
 
-Each ``RDSDict`` object will have it's own ``IDGenerator`` object with generates a (reasonably) unique id for each modification. This number will eventually loop back down, but is customizable for your use case.
+To create a new instance, each main RDS type takes two required arguments: ``location`` and ``name``. ``location`` refers to folder where the RDS data will be saved and ``name`` refers to the name of the folder where the individual RDS data will be saved for this instace. While ``location`` can be shared. ``name`` *must* be unique.
+
+.. code:: python
+    from rds import RDSDict
+
+    myDict = RDSDict('C:/RDS/', 'myDict')
+
+Once you have a new main instance, it can be used identically to the type that it is replacing. For example, ``RDSDict`` can directly replace a dict in any code, as long as the code does not specifically check if the instance is dict.
 
 Creating a New RDS Type
 -----------------------
@@ -56,8 +63,8 @@ After that line has been executed, the module will be aware of your subtype and 
 .. |License: GPL v3| image:: https://img.shields.io/badge/License-GPLv3-blue.svg
    :target: LICENSE.txt
 
-.. |PyPI3| image:: https://img.shields.io/badge/pypi-1.2.2-blue.svg
-   :target: https://pypi.org/project/py-rds/1.2.2/
+.. |PyPI3| image:: https://img.shields.io/badge/pypi-1.3.0-blue.svg
+   :target: https://pypi.org/project/py-rds/1.3.0/
 
 .. |PyPI1| image:: https://img.shields.io/badge/python-3.6+-brightgreen.svg
    :target: https://www.python.org/downloads/release/python-367/

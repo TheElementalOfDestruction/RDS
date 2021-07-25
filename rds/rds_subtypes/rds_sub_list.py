@@ -33,16 +33,16 @@ class RDSSubList(RDSSubBase):
         return self.__list.__contains__(*args, **kwargs)
 
     def __delitem__(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
             ret = self.__list.__delitem__(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def __eq__(self, *args, **kwargs):
@@ -58,30 +58,37 @@ class RDSSubList(RDSSubBase):
         return self.__list.__gt__(*args, **kwargs)
 
     def __iadd__(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
+        backup = copy.copy(self.__list)
         try:
-            ret = self.__list.__iadd__(*args, **kwargs)
+            self.__list.__iadd__(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
+        except:
+            self.__list = backup
+            raise
         finally:
-            self._running.remove(id)
-        return ret
+            self._lock.release()
+        return self # Special instance where we need to return self.
 
     def __imul__(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
-            ret = self.__list.__imul__(*args, **kwargs)
+            self.__list.__imul__(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
-        return ret
+            self._lock.release()
+        return self # Special instance where we need to return self.
+
+    def __iter__(self, *args, **kwargs):
+        return self.__list.__iter__(*args, **kwargs)
 
     def __le__(self, *args, **kwargs):
         return self.__list.__le__(*args, **kwargs)
@@ -108,45 +115,53 @@ class RDSSubList(RDSSubBase):
         return self.__list.__rmul__(*args, **kwargs)
 
     def __setitem__(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
+        backup = copy.copy(self.__list)
         try:
             ret = self.__list.__setitem__(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
+        except:
+            self.__list = backup
+            raise
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def __sizeof__(self, *args, **kwargs):
         return self.__list.__sizeof__(*args, **kwargs)
 
     def append(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
+        backup = copy.copy(self.__list)
         try:
             ret = self.__list.append(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
+        except:
+            self.__list = backup
+            raise
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def clear(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
             ret = self.__list.clear(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def copy(self, *args, **kwargs):
@@ -156,84 +171,92 @@ class RDSSubList(RDSSubBase):
         return self.__list.count(*args, **kwargs)
 
     def extend(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
+        backup = copy.copy(self.__list)
         try:
             ret = self.__list.extend(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
+        except:
+            self.__list = backup
+            raise
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def index(self, *args, **kwargs):
         return self.__list.index(*args, **kwargs)
 
     def insert(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
+        backup = copy.copy(self.__list)
         try:
             ret = self.__list.insert(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
+        except:
+            self.__list = backup
+            raise
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def pop(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
             ret = self.__list.pop(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def remove(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
             ret = self.__list.remove(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def reverse(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
             ret = self.__list.reverse(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def sort(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
             ret = self.__list.sort(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
 

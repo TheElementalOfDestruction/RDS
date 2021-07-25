@@ -31,16 +31,16 @@ class RDSSubDict(RDSSubBase):
         return self.__dict.__contains__(*args, **kwargs)
 
     def __delitem__(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
             ret = self.__dict.__delitem__(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def __eq__(self, *args, **kwargs):
@@ -74,32 +74,32 @@ class RDSSubDict(RDSSubBase):
         return self.__dict.__repr__(*args, **kwargs)
 
     def __setitem__(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
             ret = self.__dict.__setitem__(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def __sizeof__(self, *args, **kwargs):
         return self.__dict.__sizeof__(*args, **kwargs)
 
     def clear(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
             ret = self.__dict.clear(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def copy(self, *args, **kwargs):
@@ -115,55 +115,55 @@ class RDSSubDict(RDSSubBase):
         return self.__dict.keys(*args, **kwargs)
 
     def pop(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
             ret = self.__dict.pop(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def popitem(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
             ret = self.__dict.popitem(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def setdefault(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
             ret = self.__dict.setdefault(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def update(self, *args, **kwargs):
-        id = self._awaitTurn()
+        self._awaitTurn()
         try:
             ret = self.__dict.update(*args, **kwargs)
         except:
-            self._running.remove(id)
+            self._lock.release()
             raise
         try:
             self._save()
         finally:
-            self._running.remove(id)
+            self._lock.release()
         return ret
 
     def values(self, *args, **kwargs):

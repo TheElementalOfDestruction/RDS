@@ -130,3 +130,7 @@ dmypy.json
 
 # Upload files
 upload.bat
+
+# Rds testing stuff.
+rds_data/
+rds_data/*

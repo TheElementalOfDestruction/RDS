@@ -1,3 +1,11 @@
+**v1.3.0**
+* No longer uses the `IDGenerator`. Waiting for turns now purely uses the `threading.Lock` class and should (hopefully) be faster and a smoother experience.
+* Added new class `RDSList`. Works like `RDSDict` in that it can directly replace an existing list object.
+* Made RDS objects more resilient. Now if they end up being unable to save they will revert back to the previous version before a change was attempted. Unfortunately this means they will be slightly slower. I did this in a smart way, so only functions where this is a possible problem should be affected. Functions that do not add to the objects cannot prevent a new pickle from being formed, so they will not be checked.
+* Fixed the timeout exception not having the data formatted into it when I moved it directly into RDSDict (and RDSList).
+* Fixed some issues with in-place operators returning the data the represented instead of the RDS instance.
+* Fixed `RDSSubList` missing the `__iter__` function.
+
 **v1.2.2**
 * Changed public name for PyPI (why is RDS refused?).
 * Fixed README to use new name in links.
