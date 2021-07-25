@@ -6,9 +6,10 @@ Python Redundant Data Storage Module. Store changes made to a dictionary onto th
 
 An ``RDSDict`` allows you to make asynchronous and multithreaded modifications to a dictionary safely, and also allows you to have those modifications saved in a way that is redundant. Should the object get interrupted during the saving process, it can restore from the most recently completed entry. An ``RDSList`` is the equivalent class for a list.
 
-To create a new instance, each main RDS type takes two required arguments: ``location`` and ``name``. ``location`` refers to folder where the RDS data will be saved and ``name`` refers to the name of the folder where the individual RDS data will be saved for this instace. While ``location`` can be shared. ``name`` *must* be unique.
+To create a new instance, each main RDS type takes two required arguments: ``location`` and ``name``. ``location`` refers to folder where the RDS data will be saved and ``name`` refers to the name of the folder where the individual RDS data will be saved for this instance. While ``location`` can be shared. ``name`` *must* be unique.
 
 .. code:: python
+
     from rds import RDSDict
 
     myDict = RDSDict('C:/RDS/', 'myDict')
